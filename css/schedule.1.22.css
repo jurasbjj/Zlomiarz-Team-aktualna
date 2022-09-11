@@ -73,7 +73,7 @@
 }
 
 #schedule .table-schedule tr:not(:nth-of-type(1)) td span {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: calc(1px/2);
 }
 
@@ -242,6 +242,14 @@ td.divided div{
     cursor: default;
 }
 
+.mobile-schedule{
+    display: none !important;
+}
+
+.arrow-left, .arrow-right{
+    display: none;
+}
+
 
 
 /* ####################################################### KONIEC GRAFIK ######################################################   */
@@ -344,7 +352,7 @@ td.divided div{
     }
 
     #schedule .table .table-schedule tr.days span{
-        font-size: 1.5em !important;
+        font-size: 1.25em !important;
     }
 
     #schedule .table .table-schedule tr:nth-of-type(5) td{
@@ -367,6 +375,17 @@ td.divided div{
     #schedule .table .table-schedule tr.days img:nth-of-type(1){
         position: absolute;
         left: 2%;
+    }
+    .mobile-schedule{
+        display: flex !important;
+    }
+
+    p:nth-of-type(2){
+        margin-top: 16px !important;
+    }
+
+    .arrow-left, .arrow-right{
+        display: block;
     }
     
 }

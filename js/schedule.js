@@ -4,49 +4,61 @@ $('.table-schedule td div').addClass('active');
 
 
 
-// const d = new Date();
-// let day = d.getDay();
 
-// 
+ const d = new Date();
+ let day = d.getDay();
 
-day=2
 
-if (day = 6){
-  $(".saturday").addClass('on')
-  $(".day-week").text("Sobota");
+
+
+
+//////// Check day ///////
+ if (day==0){
   day=1
 }
-else if (day = 5){
+
+if (day==6){
+  $(".saturday").addClass('on')
+  $(".day-week").text("Sobota");
+  $('tr:nth-of-type(5)').height(0)
+}
+else if (day==5){
   $(".friday").addClass('on')
   $(".day-week").text("Piątek");
+  $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
 }
-else if (day = 4){
+else if (day==4){
   $(".thursday").addClass('on')
   $(".day-week").text("Czwartek");
+  $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
 }
-else if (day = 3){
+else if (day==3){
   $(".wednesday").addClass('on')
   $(".day-week").text("Środa");
+  $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
 }
-else if (day = 2){
+else if (day==2){
   $(".tuesday").addClass('on')
   $(".day-week").text("Wtorek");
+  $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
 }
-else if (day = 1){
+else if (day==1){
   $(".monday").addClass('on')
   $(".day-week").text("Poniedziałek");
+  $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
 }
+// Check day ////
 
 
 
+////// Arrows ////
 
-
-
-
-
- $( ".arrow" ).click(function() {
+///// Arrow right ////
+ $( ".arrow-right" ).click(function() {
    $( ".monday, .tuesday, .wednesday, .thursday, .friday, .saturday" ).removeClass('on');
   console.log(day)
+  day++
+
 
   if (day==7){
     day=1
@@ -55,48 +67,103 @@ else if (day = 1){
   if (day==1){
     $('.monday').addClass('on');
     $(".day-week").text("Poniedziałek");
-    $('tr:nth-of-type(5)').height($('tr:nth-of-type(7)').height())
+    $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
 
-
-
-    
   }
   if (day==2){
     $('.tuesday').addClass('on');
     $(".day-week").text("Wtorek");
-    $('tr:nth-of-type(5)').height($('tr:nth-of-type(7)').height())
-
-  
+    $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
 
   }
   if (day==3){
     $('.wednesday').addClass('on');
     $(".day-week").text("Środa");
-    $('tr:nth-of-type(5)').height($('tr:nth-of-type(7)').height())
-
-  
+    $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
 
   }
   if (day==4){
     $('.thursday').addClass('on');
     $(".day-week").text("Czwartek");
-    $('tr:nth-of-type(5)').height($('tr:nth-of-type(7)').height())  
+    $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+
   }
   if (day==5){
     $('.friday').addClass('on');
     $(".day-week").text("Piątek");
-    $('tr:nth-of-type(5)').height($('tr:nth-of-type(7)').height())
+    $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+
   }
   if (day==6){
     $('.saturday').addClass('on');
     $(".day-week").text("Sobota");
+    $('tr:nth-of-type(5)').height(0)
+
   }
-
-  day++
-
 
 
  });
+//// Arrow right ////
+
+
+//// Arrow left ////
+ $( ".arrow-left" ).click(function() {
+  $( ".monday, .tuesday, .wednesday, .thursday, .friday, .saturday" ).removeClass('on');
+ console.log(day)
+
+ day--
+
+
+ if (day==7){
+   day=6
+ }
+
+ if (day==0){
+  day=6
+ }
+ 
+ if (day==1){
+   $('.monday').addClass('on');
+   $(".day-week").text("Poniedziałek");
+   $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+ }
+ 
+ if (day==2){
+   $('.tuesday').addClass('on');
+   $(".day-week").text("Wtorek");
+   $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+ }
+ 
+ if (day==3){
+   $('.wednesday').addClass('on');
+   $(".day-week").text("Środa");
+   $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+ }
+
+ if (day==4){
+   $('.thursday').addClass('on');
+   $(".day-week").text("Czwartek");
+   $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+ }
+
+ if (day==5){
+   $('.friday').addClass('on');
+   $(".day-week").text("Piątek");
+   $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+ }
+
+ if (day==6){
+   $('.saturday').addClass('on');
+   $(".day-week").text("Sobota");
+   $('tr:nth-of-type(5)').height(0)
+
+ }
+
+
+});
+//// Arrow left ////
+
+//// Arrows /////////////////////
 
 
 
