@@ -2,17 +2,11 @@ $('.table-schedule td').addClass('active');
 $('.table-schedule td div').addClass('active');
 
 
-
-
+//////// Check day ///////
 
  const d = new Date();
  let day = d.getDay();
 
-
-
-
-
-//////// Check day ///////
  if (day==0){
   day=1
 }
@@ -166,16 +160,153 @@ else if (day==1){
 //// Arrows /////////////////////
 
 
+const box = document.querySelector('.table-schedule');
 
-$(function(){
-  // Bind the swiperightHandler callback function to the swipe event on div.box
-$( ".swiper" ).on( "swiperight", swiperightHandler );
+box.addEventListener('touchstart', handleTouchStart, false);        
+box.addEventListener('touchmove', handleTouchMove, false);
 
-// Callback function references the event target and adds the 'swiperight' class to it
-function swiperightHandler( event ){
-  $( '.swiper' ).addClass( "active" );
-}
-});
+var xDown = null;                                                        
+var yDown = null;
+
+function getTouches(evt) {
+  return evt.touches ||             // browser API
+         evt.originalEvent.touches; // jQuery
+}                                                     
+                                                                         
+function handleTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];                                      
+    xDown = firstTouch.clientX;                                      
+    yDown = firstTouch.clientY;                                      
+};                                                
+                                                                         
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+                                                                         
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+            /* right swipe */ 
+            console.log('right')
+            $( ".monday, .tuesday, .wednesday, .thursday, .friday, .saturday" ).removeClass('on');
+            console.log(day)
+            day++
+          
+          
+            if (day==7){
+              day=1
+            }
+            
+            if (day==1){
+              $('.monday').addClass('on');
+              $(".day-week").text("Poniedziałek");
+              $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+          
+            }
+            if (day==2){
+              $('.tuesday').addClass('on');
+              $(".day-week").text("Wtorek");
+              $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+          
+            }
+            if (day==3){
+              $('.wednesday').addClass('on');
+              $(".day-week").text("Środa");
+              $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+          
+            }
+            if (day==4){
+              $('.thursday').addClass('on');
+              $(".day-week").text("Czwartek");
+              $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+          
+            }
+            if (day==5){
+              $('.friday').addClass('on');
+              $(".day-week").text("Piątek");
+              $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+          
+            }
+            if (day==6){
+              $('.saturday').addClass('on');
+              $(".day-week").text("Sobota");
+              $('tr:nth-of-type(5)').height(0)
+          
+            }
+        } else {
+            /* left swipe */
+            console.log('left')
+            $( ".monday, .tuesday, .wednesday, .thursday, .friday, .saturday" ).removeClass('on');
+            console.log(day)
+           
+            day--
+           
+           
+            if (day==7){
+              day=6
+            }
+           
+            if (day==0){
+             day=6
+            }
+            
+            if (day==1){
+              $('.monday').addClass('on');
+              $(".day-week").text("Poniedziałek");
+              $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+            }
+            
+            if (day==2){
+              $('.tuesday').addClass('on');
+              $(".day-week").text("Wtorek");
+              $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+            }
+            
+            if (day==3){
+              $('.wednesday').addClass('on');
+              $(".day-week").text("Środa");
+              $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+            }
+           
+            if (day==4){
+              $('.thursday').addClass('on');
+              $(".day-week").text("Czwartek");
+              $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+            }
+           
+            if (day==5){
+              $('.friday').addClass('on');
+              $(".day-week").text("Piątek");
+              $('tr:nth-of-type(5)').height($('tr:nth-of-type(3)').height())
+            }
+           
+            if (day==6){
+              $('.saturday').addClass('on');
+              $(".day-week").text("Sobota");
+              $('tr:nth-of-type(5)').height(0)
+           
+            }
+           
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+            /* down swipe */ 
+        } else { 
+            /* up swipe */
+        }                                                                 
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+};
+
+
 
 
 $('.swiper').click(function() {

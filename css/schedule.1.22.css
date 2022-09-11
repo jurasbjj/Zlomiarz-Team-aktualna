@@ -380,14 +380,13 @@ td.divided div{
         display: flex !important;
     }
 
-    p:nth-of-type(2){
-        margin-top: 16px !important;
-    }
-
     .arrow-left, .arrow-right{
         display: block;
     }
     
+    .type-schedule{
+        display: none !important;
+    }
 }
 
 
